@@ -13,6 +13,8 @@ public class MahasiswaMain11 {
         mhs1.tampilkaninfo();
         Mahasiswa11 mhs2 = new Mahasiswa11("Muhammad Rayyan", "254309202122", "TI-1J", 3.23);
         mhs2.ubahipk(3.12);
-        mhs2.tampilkaninfo();
+        mhs2.tampilkaninfo(); 
+        Mahasiswa11 mhs = new Mahasiswa11("Skylar", "253438393", "TI-1Z", 3.8);
+        mhs.tampilkaninfo();
     }
 }
