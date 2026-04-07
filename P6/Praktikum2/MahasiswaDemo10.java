@@ -3,44 +3,35 @@ package P6.Praktikum2;
 import java.util.Scanner;
 
 public class MahasiswaDemo10 {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        Scanner s1 = new Scanner(System.in); // Scanner tambahan untuk String agar tidak skip
-        
+    public static void main(String[] args) { 
         MahasiswaBerprestasi10 list = new MahasiswaBerprestasi10();
-        int jmlMhs = 5; // Misalkan kita ingin menginput 5 mahasiswa
+        Scanner sc = new Scanner(System.in);
+        int jmlMhs = 5; 
 
         for (int i = 0; i < jmlMhs; i++) {
             System.out.println("--- Masukkan Data Mahasiswa ke-" + (i + 1) + " ---");
             System.out.print("NIM   : ");
-            String nim = s1.nextLine();
+            String nim = sc.nextLine();
             System.out.print("Nama  : ");
-            String nama = s1.nextLine();
+            String nama = sc.nextLine();
             System.out.print("Kelas : ");
-            String kelas = s1.nextLine();
-            System.out.print("IPK   : ");
-            double ipk = s.nextDouble();
-            
-            Mahasiswa10 m = new Mahasiswa10(nim, nama, kelas, ipk);
-            list.tambah(m);
+            String kelas = sc   .nextLine();
+            System.out.print("IPK : ");
+            double ipk = Double.parseDouble(sc.nextLine());
+            System.out.println("-----------------------------");
+            list.tambah (new Mahasiswa10(nim, nama, kelas, ipk)); 
         }
+            list.tampil();
+            System.out.println("---------------------------------");
+            System.out.println("Pencarian Data");
+            System.out.println("---------------------------------");
+            System.out.println("Masukkan IPK Mahasiswa yang dicari: ");
+            System.out.print("IPK: ");
+            double cari = sc.nextDouble();
 
-        System.out.println("\nData mahasiswa sebelum sorting:");
-        list.tampil();
-
-        System.out.println("\nData Mahasiswa setelah sorting berdasarkan IPK (DESC):");
-        list.bubbleSort();
-        list.tampil();
-
-        System.out.println("\nData Mahasiswa setelah sorting berdasarkan IPK (ASC):");
-        list.selectionSort();
-        list.tampil();
-
-        System.out.println("\nData Mahasiswa setelah sorting berdasarkan IPK (ASC):");
-        list.insertionSort();
-        list.tampil();
-        
-        s.close();
-        s1.close();
-    }
+            System.out.println("Menggunakan Sequental Searching");
+            double posisi = list.sequentialSearching(cari);
+            int pss = (int) posisi;
+            list.tampilPosisi(cari, pss);
+            list.tampilDataSearch(cari, pss);}
 }
