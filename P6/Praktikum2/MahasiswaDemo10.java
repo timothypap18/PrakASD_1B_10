@@ -27,11 +27,12 @@ public class MahasiswaDemo10 {
             System.out.println("---------------------------------");
             System.out.println("Masukkan IPK Mahasiswa yang dicari: ");
             System.out.print("IPK: ");
-            double cari = sc.nextDouble();
-
-            System.out.println("Menggunakan Sequental Searching");
-            double posisi = list.sequentialSearching(cari);
-            int pss = (int) posisi;
-            list.tampilPosisi(cari, pss);
-            list.tampilDataSearch(cari, pss);}
+            double cari = Double.parseDouble(sc.nextLine());
+            System.out.println("---------------------------------");
+            System.out.println("Menggunakan Binary Search");
+            System.out.println("---------------------------------");
+            int posisi = list.findBinarySearch(cari, 0, jmlMhs- 1);
+            int pss2 = (int)posisi;
+            list.tampilPosisi(cari, pss2);
+            list.tampilDataSearch(cari, pss2);}
 }

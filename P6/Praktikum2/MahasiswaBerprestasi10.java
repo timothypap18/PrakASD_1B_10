@@ -1,8 +1,12 @@
 package P6.Praktikum2;
 
 public class MahasiswaBerprestasi10 {
-    Mahasiswa10[] listMhs= new Mahasiswa10[5];
+    Mahasiswa10[] listMhs;
     int idx;
+    void inisialisasiArray(int jml) {
+        listMhs = new Mahasiswa10[jml];
+        idx = 0;
+    }
     void tambah (Mahasiswa10 m){
         if (idx<listMhs.length){
             listMhs[idx] = m;
@@ -78,5 +82,19 @@ public class MahasiswaBerprestasi10 {
         } else {
             System.out.println("Data Mahasiswa dengan IPK "+x+" tidak ditemukan");
         }
+    }
+    int findBinarySearch(double cari, int left, int right){
+        int mid;
+        if (right>=left){
+            mid = (left + right)/2;
+            if (cari == listMhs[mid].ipk) {
+                return mid;
+            } else if (cari > listMhs[mid].ipk) { // Ganti < menjadi >
+                return findBinarySearch(cari, left, mid - 1);
+            } else {
+                return findBinarySearch(cari, mid + 1, right);
+            }
+        }
+        return -1;
     }
 }
