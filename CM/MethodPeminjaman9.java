@@ -91,7 +91,17 @@ public class MethodPeminjaman9 {
                         } else if (pinjam[mid].mhs.nim.compareTo(caruNIM) < 0) low = mid + 1;
                         else high = mid - 1;
                     }
-                    if (!found) System.out.println("Data tidak ditemukan.");
+                    System.out.println("Update Lama Pinjam : ");
+                    int lamaPinjam = sc.nextInt();
+                    if (found) {
+                        for (PemimjamanBuku9 p : pinjam) {
+                            if (p.mhs.nim.equals(caruNIM)) {
+                                p.lamaPinjam = lamaPinjam;
+                                p.hitungDenda();
+                                p.tampilPeminjaman();
+                            }
+                        }
+                    } else System.out.println("Data tidak ditemukan");
                     break;
             }
         } while (menu != 0);
