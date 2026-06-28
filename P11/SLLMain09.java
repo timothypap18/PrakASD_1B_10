@@ -1,39 +1,119 @@
 package P11;
 
+import java.util.Scanner;
+
 public class SLLMain09 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         SingleLinkedList09 singLL = new SingleLinkedList09();
+        int pilihan;
 
-        Mahasiswa09 mhs1 = new Mahasiswa09("123", "Andi", "TI-1A", 3.5);
-        Mahasiswa09 mhs2 = new Mahasiswa09("124", "Budi", "TI-1A", 3.2);
-        Mahasiswa09 mhs3 = new Mahasiswa09("125", "Cici", "TI-1B", 3.8);
-        Mahasiswa09 mhs4 = new Mahasiswa09("126", "Dodi", "TI-1B", 3.0);
+        do {
+            System.out.println("\n=== MENU LINKED LIST ===");
+            System.out.println("1. Tambah Data di Awal (addFirst)");
+            System.out.println("2. Tambah Data di Akhir (addLast)");
+            System.out.println("3. Tambah Data Setelah NIM Tertentu (insertAfter)");
+            System.out.println("4. Tambah Data pada Indeks Tertentu (insertAt)");
+            System.out.println("5. Tampilkan Semua Data");
+            System.out.println("6. Tampilkan Detail Data");
+            System.out.println("0. Keluar");
+            System.out.print("Pilih menu: ");
+            pilihan = sc.nextInt();
+            sc.nextLine();
 
-        System.out.println("=== Menambahkan data dengan addFirst ===");
-        singLL.addFirst(mhs1);
-        singLL.print();
+            switch (pilihan) {
+                case 1:
+                    System.out.println("\n--- Tambah Data di Awal ---");
+                    System.out.print("NIM: ");
+                    String nim = sc.nextLine();
+                    System.out.print("Nama: ");
+                    String nama = sc.nextLine();
+                    System.out.print("Kelas: ");
+                    String kelas = sc.nextLine();
+                    System.out.print("IPK: ");
+                    double ipk = sc.nextDouble();
+                    sc.nextLine();
+                    Mahasiswa09 mhs = new Mahasiswa09(nim, nama, kelas, ipk);
+                    singLL.addFirst(mhs);
+                    System.out.println("Data berhasil ditambahkan!");
+                    singLL.print();
+                    break;
 
-        singLL.addFirst(mhs2);
-        singLL.print();
+                case 2:
+                    System.out.println("\n--- Tambah Data di Akhir ---");
+                    System.out.print("NIM: ");
+                    nim = sc.nextLine();
+                    System.out.print("Nama: ");
+                    nama = sc.nextLine();
+                    System.out.print("Kelas: ");
+                    kelas = sc.nextLine();
+                    System.out.print("IPK: ");
+                    ipk = sc.nextDouble();
+                    sc.nextLine();
+                    mhs = new Mahasiswa09(nim, nama, kelas, ipk);
+                    singLL.addLast(mhs);
+                    System.out.println("Data berhasil ditambahkan!");
+                    singLL.print();
+                    break;
 
-        System.out.println("=== Menambahkan data dengan addLast ===");
-        singLL.addLast(mhs3);
-        singLL.print();
+                case 3:
+                    System.out.println("\n--- Tambah Data Setelah NIM Tertentu ---");
+                    System.out.print("Masukkan NIM setelah data akan ditambahkan: ");
+                    String key = sc.nextLine();
+                    System.out.print("NIM: ");
+                    nim = sc.nextLine();
+                    System.out.print("Nama: ");
+                    nama = sc.nextLine();
+                    System.out.print("Kelas: ");
+                    kelas = sc.nextLine();
+                    System.out.print("IPK: ");
+                    ipk = sc.nextDouble();
+                    sc.nextLine();
+                    mhs = new Mahasiswa09(nim, nama, kelas, ipk);
+                    singLL.insertAfter(key, mhs);
+                    System.out.println("Data berhasil ditambahkan!");
+                    singLL.print();
+                    break;
 
-        singLL.addLast(mhs4);
-        singLL.print();
+                case 4:
+                    System.out.println("\n--- Tambah Data pada Indeks Tertentu ---");
+                    System.out.print("Masukkan indeks: ");
+                    int index = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("NIM: ");
+                    nim = sc.nextLine();
+                    System.out.print("Nama: ");
+                    nama = sc.nextLine();
+                    System.out.print("Kelas: ");
+                    kelas = sc.nextLine();
+                    System.out.print("IPK: ");
+                    ipk = sc.nextDouble();
+                    sc.nextLine();
+                    mhs = new Mahasiswa09(nim, nama, kelas, ipk);
+                    singLL.insertAt(index, mhs);
+                    System.out.println("Data berhasil ditambahkan!");
+                    singLL.print();
+                    break;
 
-        System.out.println("=== Menambahkan data dengan insertAfter ===");
-        Mahasiswa09 mhs5 = new Mahasiswa09("127", "Euis", "TI-1C", 3.6);
-        singLL.insertAfter("124", mhs5);
-        singLL.print();
+                case 5:
+                    System.out.println();
+                    singLL.print();
+                    break;
 
-        System.out.println("=== Menambahkan data dengan insertAt ===");
-        Mahasiswa09 mhs6 = new Mahasiswa09("128", "Fajar", "TI-1C", 3.7);
-        singLL.insertAt(2, mhs6);
-        singLL.print();
+                case 6:
+                    System.out.println();
+                    singLL.printDetail();
+                    break;
 
-        System.out.println("\n=== Detail Linked List ===");
-        singLL.printDetail();
+                case 0:
+                    System.out.println("Terima kasih!");
+                    break;
+
+                default:
+                    System.out.println("Pilihan tidak valid!");
+            }
+        } while (pilihan != 0);
+
+        sc.close();
     }
 }
