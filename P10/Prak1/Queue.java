@@ -64,24 +64,30 @@ public class Queue {
         }
     }
 
-    public void Enqueue (int dt) {
-        if(IsFull()) {
-            front = rear = 0;
+    public void Enqueue(int dt) {
+        if (IsFull()) {
+            System.out.println("Queue sudah penuh - Program dihentikan!");
+            System.exit(0);  // Menghentikan program
         } else {
-            if(rear == max - 1) {
-                rear = 0;
+            if (IsEmpty()) {
+                front = rear = 0;
             } else {
-                rear++;
+                if (rear == max - 1) {
+                    rear = 0;
+                } else {
+                    rear++;
+                }
             }
+            data[rear] = dt;
+            size++;
         }
-        data[rear] = dt;
-        size++;
     }
 
     public int Dequeue() {
         int dt = 0;
         if (IsEmpty()) {
-            System.out.println("Queue masih kosong");
+            System.out.println("Queue masih kosong - Program dihentikan!");
+            System.exit(0);  // Menghentikan program
         } else {
             dt = data[front];
             size--;
