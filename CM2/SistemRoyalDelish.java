@@ -202,10 +202,10 @@ public class SistemRoyalDelish {
                     break;
 
                 case 5:
-                    System.out.println("No HP : ");
-                    String CariNoHp = sc.nextLine();
-                    int low = 0, hight = resto.tambahAntrian - 1;
-                                 
+                    System.out.print("Masukkan No.HP yang dicari: ");
+                    String cariNoHp = sc.nextLine();
+                    resto.cariDataBerdasarkanNoHP(cariNoHp);
+                    break;
 
                 case 0:
                     System.out.println("Keluar dari sistem. Terima kasih!");
